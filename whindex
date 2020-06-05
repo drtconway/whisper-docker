@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ $# -le 2 ]
+then
+    echo "whindex <dest-dir> <index-name> <fasta>..."
+    exit 1
+fi
+
+dest="$1"
+shift
+
+idxnm="$1"
+shift
+
+if [ $# -eq 1 ]
+then
+    whisper-index ${idxnm} $1 ${dest} /tmp
+else
+    fanm=$(tempfile)
+    trap "rm -rf ${fanm}" EXIT
+    for f in $@
+    do
+        echo ${f} >> ${fanm}
+    done
+    whisper-index ${idxnm} @${fanm} ${dest} /tmp
+fi

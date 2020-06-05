@@ -13,3 +13,5 @@ RUN git clone https://github.com/refresh-bio/Whisper.git && \
     apt remove -y gcc g++ git make && \
     apt autoremove -y && \
     rm -rf /var/lib/apt/lists/*
+
+ADD whindex /usr/bin/whindex
