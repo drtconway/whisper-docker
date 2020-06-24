@@ -24,3 +24,4 @@ else
     done
     whisper-index ${idxnm} @${fanm} ${dest} ${TMPDIR:-/tmp}
 fi
+touch ${dest}/${idxnm}.whisper_idx
