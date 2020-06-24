@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -x
 
 if [ $# -le 2 ]
 then
