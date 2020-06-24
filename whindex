@@ -12,6 +12,12 @@ shift
 idxnm="$1"
 shift
 
+if ! test -d ${dest}
+then
+    echo "creating destination directory: ${dest}" 1>&2
+    mkdir -p ${dest}
+fi
+
 if [ $# -eq 1 ]
 then
     whisper-index ${idxnm} $1 ${dest} ${TMPDIR:-/tmp}
