@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 
 if [ $# -le 2 ]
 then
@@ -29,6 +30,7 @@ else
     do
         echo ${f} >> ${fanm}
     done
+    echo "executing: whisper-index ${idxnm} @${fanm} ${dest} ${TMPDIR:-/tmp}" 1>&2
     whisper-index ${idxnm} @${fanm} ${dest} ${TMPDIR:-/tmp}
 fi
 touch ${dest}/${idxnm}.whisper_idx
